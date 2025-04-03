@@ -40,3 +40,6 @@ build/
 
 ### .pem ###
 *.pem
+
+### .yml ###
+*.yml
