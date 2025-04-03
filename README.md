@@ -5,17 +5,18 @@
 ## Tecnologias Utilizadas
 
 - Java 21
-- Spring Boot 
+- Spring Boot
+- Spring Data JPA
 - Spring Security
-- OAuth2 (Resource Server, Client e Authorization Server)
-- JWT (JSON Web Token)
+- Lombok
+- OAuth2 
+- JWT
+- Hibernate
+- Maven
 - Redis (Gerenciamento de Sessões e Refresh Tokens)
 - PostgreSQL (Para guardar dados que não podem ser perdidos)
 - Redis Cloud (Gerenciar tokens de acesso e cache)
-- Spring Data JPA
-- Hibernate
-- Lombok (Redução de Boilerplate Code)
-- Maven
+
 
 ## Fluxo do projeto
 
