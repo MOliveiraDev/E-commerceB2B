@@ -1,27 +1,22 @@
-# E-commerceB2B [![My Skills](https://skillicons.dev/icons?i=spring&theme=)](https://spring.io/projects/spring-boot) [![My Skills](https://skillicons.dev/icons?i=redis&theme=)](https://redis.io/docs/latest/)
+# E-commerceB2B [![My Skills](https://skillicons.dev/icons?i=spring&theme=)](https://spring.io/projects/spring-boot) [![My Skills](https://skillicons.dev/icons?i=redis&theme=)](https://redis.io/docs/latest/) [![My Skills](https://skillicons.dev/icons?i=postgresql&theme=)](https://www.postgresql.org/)
  
-É um projeto Back-End E-commerce B2B desenvolvido com Spring Boot, Spring Security, OAuth2, JWT e com banco de dados não relacional Redis. assim empresas e funcionários podem ter acessos seguros e controle refinado de permissões, assim o projeto oferece segurança para a empresa
+É um projeto Back-End E-commerce B2B desenvolvido com Spring Boot, Spring Security, OAuth2, JWT, SQL (PostgreSQL), NoSQL(Redis). assim empresas e funcionários podem ter acessos seguros e controle refinado de permissões, assim o projeto oferece segurança para a empresa
 
-## 🛠 Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
-O projeto foi desenvolvido utilizando as seguintes tecnologias:
+- Java 21
+- Spring Boot 3.x
+- Spring Security
+- OAuth2 (Resource Server, Client e Authorization Server)
+- JWT (JSON Web Token)
+- Redis (Gerenciamento de Sessões e Refresh Tokens)
+- PostgreSQL (Para guardar dados que não podem ser perdidos)
+- Redis Cloud (Gerenciar tokens de acesso e cache)
+- Spring Data JPA
+- Hibernate
+- Lombok (Redução de Boilerplate Code)
 
-- **Linguagem**: Java 17
-- **Framework**: Spring Boot 3.x
-- **Autenticação e Segurança**:
-  - Spring Security
-  - OAuth2 (Resource Server, Client e Authorization Server)
-  - JWT (JSON Web Token)
-  - Redis (Gerenciamento de Sessões e Refresh Tokens)
-- **Banco de Dados**:
-  - PostgreSQL (Dados Persistentes)
-  - Redis Cloud (Cache Distribuído para Sessões)
-- **ORM e Persistência**:
-  - Spring Data JPA
-  - Hibernate
-- **Ferramentas de Desenvolvimento**:
-  - Lombok (Redução de Boilerplate Code)
-  - Spring Boot DevTools (Hot Reload)
+  
 - **Servidor de Aplicação**:
   - Apache Tomcat (Embutido no Spring Boot)
 - **Gerenciamento de Dependências**:
