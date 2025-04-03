@@ -1,3 +1,3 @@
 # E-commerceB2B
  
-### Este projeto é um E-commerce B2B desenvolvido com Spring Boot, Spring Security, OAuth2 e JWT, assim tendo o acesso seguro e controle refinado de permissões para supostas empresas e funcionários dessa empresa.
+### É um projeto Back-End E-commerce B2B desenvolvido com Spring Boot, Spring Security, OAuth2, JWT e com banco de dados não relacional Redis. assim empresas e funcionários podem ter acessos seguros e controle refinado de permissões, assim o projeto oferece segurança para a empresa
