@@ -17,7 +17,7 @@
 - Lombok (Redução de Boilerplate Code)
 - Maven
 
-## Fluxo de Funcionamento
+## Fluxo do projeto
 
 - 1️⃣ Cliente acessa o portal B2B e faz login usando JWT ou OAuth2.
 - 2️⃣ O sistema valida as credenciais e retorna um Token JWT.
