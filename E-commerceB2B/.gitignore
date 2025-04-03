@@ -43,3 +43,6 @@ build/
 
 ### .yml ###
 *.yml
+
+### .properties ###
+*.properties
