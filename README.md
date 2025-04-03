@@ -5,7 +5,7 @@
 ## Tecnologias Utilizadas
 
 - Java 21
-- Spring Boot 3.x
+- Spring Boot 
 - Spring Security
 - OAuth2 (Resource Server, Client e Authorization Server)
 - JWT (JSON Web Token)
@@ -15,9 +15,13 @@
 - Spring Data JPA
 - Hibernate
 - Lombok (Redução de Boilerplate Code)
+- Maven
 
-  
-- **Servidor de Aplicação**:
-  - Apache Tomcat (Embutido no Spring Boot)
-- **Gerenciamento de Dependências**:
-  - Maven
+## Fluxo de Funcionamento
+
+1️⃣ Cliente acessa o portal B2B e faz login usando JWT ou OAuth2.
+2️⃣ O sistema valida as credenciais e retorna um Token JWT.
+3️⃣ O cliente usa esse token para acessar a plataforma e visualizar produtos e preços.
+4️⃣ Dependendo da permissão, ele pode realizar pedidos e visualizar faturas.
+5️⃣ Caso o token expire, um Refresh Token gera um novo JWT.
+6️⃣ Todas as ações são registradas em logs para segurança e auditoria.
