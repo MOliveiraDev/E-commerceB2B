@@ -39,46 +39,10 @@
    - Se o token for válido, a API remove o token de atualização do armazenamento, efetivamente deslogando o usuário.
 
 ### Exemplo de Fluxo de Autenticação
-1. *Login*:
-   - Requisição:
-     json
-     {
-       "username": "user1",
-       "password": "password123"
-     }
-     
-   - Resposta:
-     json
-     {
-       "jwt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
-       "refreshToken": "dGhpc2lzYXJlZnJlc2h0b2tlbg==",
-       "email": "user1@example.com"
-     }
-     
 
-2. *Renovação de Token*:
-   - Requisição:
-     json
-     {
-       "token": "dGhpc2lzYXJlZnJlc2h0b2tlbg=="
-     }
-     
-   - Resposta:
-     json
-     {
-       "jwt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
-     }
-     
+**Login**
 
-3. *Logout*:
-   - Requisição:
-     json
-     {
-       "token": "dGhpc2lzYXJlZnJlc2h0b2tlbg=="
-     }
-     
-   - Resposta:
-     json
-     {
-       "message": "Logout successful"
-     }
+{
+  "username": "user1",
+  "password": "password123"
+}
