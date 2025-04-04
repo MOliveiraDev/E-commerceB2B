@@ -4,14 +4,12 @@
 
 ## Tecnologias Utilizadas
 
-- *Java*: Linguagem de programação principal.
-- *Spring Boot*: Framework para criar aplicações Java.
-- *Spring Security*: Framework para segurança e autenticação.
-- *JWT (JSON Web Tokens)*: Para autenticação baseada em tokens.
-- *PostgreSQL*: Banco de dados relacional.
-- *Redis*: Armazenamento de dados em memória, usado para gerenciar tokens de atualização.
-- *Maven*: Gerenciador de dependências e build.
-- *Flyway*: Ferramenta de migração de banco de dados.
+- Java
+- Spring Boot(Security, JPA, Web)
+- PostgreSQL
+- Redis
+- Maven
+- Flyway
 
 
 
