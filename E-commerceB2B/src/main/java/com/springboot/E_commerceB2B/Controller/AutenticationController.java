@@ -2,10 +2,12 @@ package com.springboot.E_commerceB2B.Controller;
 
 import com.nimbusds.openid.connect.sdk.AuthenticationRequest;
 import com.springboot.E_commerceB2B.Entities.AuthenticationEntity;
+import com.springboot.E_commerceB2B.Entities.AuthenticationResponse;
 import com.springboot.E_commerceB2B.Entities.RefreshTokens;
 import com.springboot.E_commerceB2B.Service.RefreshTokenService;
 import com.springboot.E_commerceB2B.Util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -28,18 +30,17 @@ public class AutenticationController {
     private UserDetailsService userDetailsService;
 
     @Autowired
-    private AuthenticationRequest authenticationRequest;
-
-    @Autowired
     private RefreshTokenService refreshTokenService;
 
     // Adicionar os Métodos de autenticação e geração de token
 
     @PostMapping("/authenticate")
-    public String createAuthenticationToken(@RequestBody AuthenticationEntity authenticationEntity) throws Exception {
+    public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationEntity authenticationEntity) throws Exception {
         try {
             authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(authenticationEntity.getUsername(), authenticationEntity.getPassword())
+                    new UsernamePasswordAuthenticationToken(
+                            authenticationEntity.getUsername(),
+                            authenticationEntity.getPassword())
             );
         } catch (BadCredentialsException e) {
             throw new Exception("Incorrect username or password", e);
@@ -49,7 +50,7 @@ public class AutenticationController {
         final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationEntity.getUsername());
         final String jwt = jwtUtil.generateToken(userDetails.getUsername());
 
-        return jwt + " " + refreshToken.getToken();
+        return ResponseEntity.ok(new AuthenticationResponse(jwt, refreshToken.getToken(), authenticationEntity.getEmail()));
     }
 
     // Método para fazer o Refresh Token
