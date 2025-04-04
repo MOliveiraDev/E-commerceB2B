@@ -46,6 +46,3 @@ build/
 
 ### .properties ###
 *.properties
-
-### .png ###
-*.png
