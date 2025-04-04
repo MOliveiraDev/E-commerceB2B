@@ -42,7 +42,25 @@
 
 **Login**
 
+Requisição
+
+```json
 {
   "username": "user1",
   "password": "password123"
 }
+
+```
+
+Saida
+
+```json
+{
+  "jwt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+  "refreshToken": "dGhpc2lzYXJlZnJlc2h0b2tlbg==",
+  "email": "user1@example.com"
+}
+
+```
+
+
