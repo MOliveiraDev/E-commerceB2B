@@ -4,18 +4,15 @@
 
 ## Tecnologias Utilizadas
 
-- Java 21
-- Spring Boot
-- Spring Data JPA
-- Spring Security
-- Lombok
-- OAuth2 
-- JWT
-- Hibernate
-- Maven
-- Redis (Gerenciamento de Sessões e Refresh Tokens)
-- PostgreSQL (Para guardar dados que não podem ser perdidos)
-- Redis Cloud (Gerenciar tokens de acesso e cache)
+- *Java*: Linguagem de programação principal.
+- *Spring Boot*: Framework para criar aplicações Java.
+- *Spring Security*: Framework para segurança e autenticação.
+- *JWT (JSON Web Tokens)*: Para autenticação baseada em tokens.
+- *PostgreSQL*: Banco de dados relacional.
+- *Redis*: Armazenamento de dados em memória, usado para gerenciar tokens de atualização.
+- *Maven*: Gerenciador de dependências e build.
+- *Flyway*: Ferramenta de migração de banco de dados.
+
 
 
 ## Fluxo do projeto
@@ -38,7 +35,7 @@
    - A API verifica a validade do token de atualização.
    - Se o token for válido, a API remove o token de atualização do armazenamento, efetivamente deslogando o usuário.
 
-## Exemplo de Fluxo de Autenticação
+## Exemplo do Fluxo de Autenticação
 
 **Login**
 
@@ -52,13 +49,57 @@ Requisição
 
 ```
 
-Saida
+Resposta
 
 ```json
 {
   "jwt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
   "refreshToken": "dGhpc2lzYXJlZnJlc2h0b2tlbg==",
   "email": "user1@example.com"
+}
+
+```
+
+**Renovação de Token**
+
+Requisição
+
+```json
+
+{
+  "token": "refresh-token"
+}
+
+```
+
+Resposta
+
+```json
+
+{
+  "jwt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+}
+
+```
+
+**Logout**
+
+Requisição
+
+```json
+
+{
+  "token": "expiredToken"
+}
+
+```
+
+Resposta
+
+```json
+
+{
+  "message": "Logout successful"
 }
 
 ```
