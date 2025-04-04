@@ -60,7 +60,7 @@ Resposta
 
 ```
 
-**Renovação de Token**
+### **Renovação de Token**
 
 Requisição
 
@@ -82,7 +82,7 @@ Resposta
 
 ```
 
-**Logout**
+### **Logout**
 
 Requisição
 
