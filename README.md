@@ -38,7 +38,7 @@
    - A API verifica a validade do token de atualização.
    - Se o token for válido, a API remove o token de atualização do armazenamento, efetivamente deslogando o usuário.
 
-### Exemplo de Fluxo de Autenticação
+## Exemplo de Fluxo de Autenticação
 
 **Login**
 
