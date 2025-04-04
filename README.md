@@ -22,3 +22,63 @@
 
 ![Fluxo](./E-commerceB2B/visualselection.png)
 
+1. *Autenticação*:
+   - O usuário envia suas credenciais (username e password) para o endpoint /authenticate.
+   - A API autentica o usuário usando AuthenticationManager.
+   - Se as credenciais forem válidas, a API gera um token JWT e um token de atualização.
+   - A resposta contém o token JWT, o token de atualização e o email do usuário.
+
+2. *Renovação de Token*:
+   - O usuário envia um token de atualização para o endpoint /refresh-token.
+   - A API verifica a validade e a expiração do token de atualização.
+   - Se o token for válido, a API gera um novo token JWT e o retorna.
+
+3. *Logout*:
+   - O usuário envia um token de atualização para o endpoint /logout.
+   - A API verifica a validade do token de atualização.
+   - Se o token for válido, a API remove o token de atualização do armazenamento, efetivamente deslogando o usuário.
+
+### Exemplo de Fluxo de Autenticação
+1. *Login*:
+   - Requisição:
+     json
+     {
+       "username": "user1",
+       "password": "password123"
+     }
+     
+   - Resposta:
+     json
+     {
+       "jwt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+       "refreshToken": "dGhpc2lzYXJlZnJlc2h0b2tlbg==",
+       "email": "user1@example.com"
+     }
+     
+
+2. *Renovação de Token*:
+   - Requisição:
+     json
+     {
+       "token": "dGhpc2lzYXJlZnJlc2h0b2tlbg=="
+     }
+     
+   - Resposta:
+     json
+     {
+       "jwt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+     }
+     
+
+3. *Logout*:
+   - Requisição:
+     json
+     {
+       "token": "dGhpc2lzYXJlZnJlc2h0b2tlbg=="
+     }
+     
+   - Resposta:
+     json
+     {
+       "message": "Logout successful"
+     }
