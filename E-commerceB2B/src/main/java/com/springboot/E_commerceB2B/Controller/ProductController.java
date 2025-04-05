@@ -21,6 +21,7 @@ public class ProductController {
         private ProductService productService;
 
 
+        @PreAuthorize("hasRole('ADMIN')")
         @GetMapping("/productsList")
         public ResponseEntity<List <Product>> getAllProducts() {
             List<Product> products = productService.getAllProducts();

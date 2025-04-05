@@ -43,4 +43,11 @@ public class Order {
     public String getStatus() {
         return null;
     }
+
+    public void setUsername(String username) {
+    }
+
+    public Object getUsername() {
+        return null;
+    }
 }

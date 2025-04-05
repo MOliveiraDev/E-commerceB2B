@@ -13,31 +13,34 @@ public class OrderService {
         @Autowired
         private OrderRepository orderRepository;
 
-        public List <Order> getAllOrders() {
-            return orderRepository.findAll();
+        public List<Order> getOrdersByUsername(String username) {
+            return orderRepository.findByUsername(username);
         }
 
-        public void addOrder(Order order) {
-            orderRepository.save(order);
-        }
+    public Order createOrder(Order order, String username) {
+        order.setUsername(username);
+        return orderRepository.save(order);
+    }
 
         // Cancelar o pedido
-        public void cancelOrder(Long orderId) {
+        public void cancelOrder(Long orderId, String username) {
             Order order = orderRepository.findById(orderId).orElse(null);
-            if (order != null)
-            {
-                order.setStatus("Canceled");
+            if (order != null && order.getUsername().equals(username)) {
+                order.setStatus("CANCELLED");
                 orderRepository.save(order);
             }
         }
 
         //Atualizar Pedido
-        public void updateOrder(Order order) {
+        public Order updateOrder(Order order, String username) {
             Order existingOrder = orderRepository.findById(order.getId()).orElse(null);
-            if (existingOrder != null) {
+            if (existingOrder != null && existingOrder.getUsername().equals(username)) {
                 existingOrder.setStatus(order.getStatus());
                 existingOrder.setTotalPrice(order.getTotalPrice());
-                orderRepository.save(existingOrder);
+                return orderRepository.save(existingOrder);
             }
+            return null;
         }
+
+
 }

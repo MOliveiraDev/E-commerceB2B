@@ -5,6 +5,7 @@ import com.springboot.E_commerceB2B.Service.OrderService;
 import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,31 +21,37 @@ public class OrderController {
         @Autowired
         private OrderService orderService;
 
-        // Adicionar o end points para criar e gerenciar pedidos
-        @PostMapping("/addOrder")
-        public ResponseEntity<Order> addOrder(@RequestBody Order order) {
-            orderService.addOrder(order);
-            return ResponseEntity.ok(order);
+        //Listar todos os pedidos de tal usuário
+        @GetMapping("/myOrders")
+        public ResponseEntity<List<Order>> getUserOrders(Authentication authentication) {
+            String username = authentication.getName();
+            List<Order> orders = orderService.getOrdersByUsername(username);
+            return ResponseEntity.ok(orders);
         }
 
-        //Cancelar o pedido
-        @PostMapping("/cancelOrder")
-        public  ResponseEntity<Order> cancelOrder(@RequestBody Long orderId) {
-            orderService.cancelOrder(orderId);
+        // Atualizar o pedido
+        @PostMapping
+        public ResponseEntity<Order> updateOrder(@RequestBody Order order, Authentication authentication) {
+            String username = authentication.getName();
+            Order updatedOrder = orderService.updateOrder(order, username);
+            return ResponseEntity.ok(updatedOrder);
+        }
+
+        // Adicionar o end points para criar e gerenciar pedidos
+        @PostMapping("/addmyOrder")
+        public ResponseEntity<Order> createOrder(@RequestBody Order order, Authentication authentication) {
+            String username = authentication.getName();
+            Order createdOrder = orderService.createOrder(order, username);
+            return ResponseEntity.ok(createdOrder);
+        }
+
+        // Cancelar o pedido
+        @PostMapping("/cancelmyOrder")
+        public ResponseEntity<Order> cancelOrder(@RequestBody Long orderId, Authentication authentication) {
+            String username = authentication.getName();
+            orderService.cancelOrder(orderId, username);
             return ResponseEntity.ok().build();
         }
 
-        //Atualizar o pedido
-        @PostMapping("/updateOrder")
-        public ResponseEntity<Order> updateOrder(@RequestBody Order order) {
-            orderService.updateOrder(order);
-            return ResponseEntity.ok(order);
-        }
 
-        //Listar todos os pedidos de tal usuário
-        @GetMapping("/getAllOrders")
-        public ResponseEntity<Order> getAllOrders() {
-            List<Order> orders = orderService.getAllOrders();
-            return ResponseEntity.ok((Order) orders);
-        }
 }
