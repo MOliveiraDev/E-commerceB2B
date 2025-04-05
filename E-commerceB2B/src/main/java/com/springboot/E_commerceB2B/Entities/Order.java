@@ -13,41 +13,38 @@ import java.util.List;
 @Table(name = "tb_order")
 public class Order {
 
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
 
-        @NotNull
-        private String userId;
+    @NotNull
+    private String userId;
 
-        @OneToMany(cascade = CascadeType.ALL)
-        private List<Product> products;
+    @Setter
+    @Getter
+    @NotNull
+    private String username;
 
-        @NotNull
-        private double totalPrice;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Product> products;
 
-        public Order() {
-        }
+    @NotNull
+    private double totalPrice;
 
-        public Order(long id, String userId, List<Product> products, double totalPrice) {
-                this.id = id;
-                this.userId = userId;
-                this.products = products;
-                this.totalPrice = totalPrice;
-        }
+    @Setter
+    @Getter
+    private String status;
 
-    public void setStatus(String canceled) {
-        
+    public Order() {
     }
 
-    public String getStatus() {
-        return null;
+    public Order(long id, String userId, String username, List<Product> products, double totalPrice, String status) {
+        this.id = id;
+        this.userId = userId;
+        this.username = username;
+        this.products = products;
+        this.totalPrice = totalPrice;
+        this.status = status;
     }
 
-    public void setUsername(String username) {
-    }
-
-    public Object getUsername() {
-        return null;
-    }
 }
